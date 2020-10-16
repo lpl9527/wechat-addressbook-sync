@@ -6,16 +6,16 @@
     https://work.weixin.qq.com/api/doc/90001/90143/91132
 
 1.获取企业微信token
-	http://172.16.4.171:20006/sync/token
+	http://localhost:20006/sync/token
 
 2.同步部门
-	http://172.16.4.171:20006/sync/org
+	http://localhost:20006/sync/org
 
 3.同步人员
-	http://172.16.4.171:20006/sync/user
+	http://localhost:20006/sync/user
 
 4.同步部门和人员
-	http://172.16.4.171:20006/sync
+	http://localhost:20006/sync
 
 5.获取同步结果
-	http://172.16.4.171:20006/sync/result?jobId=同步部门或人员后获取到的jobId
+	http://localhost:20006/sync/result?jobId=同步部门或人员后获取到的jobId
