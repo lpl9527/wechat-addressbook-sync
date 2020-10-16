@@ -1,0 +1,23 @@
+server:
+  port: ${SERVER_PORT:20006}
+
+spring:
+  mybatis:
+    typeAliasesPackage: com.supwisdom.platform.model
+    mapperLocations: classpath:mapper/*.xml
+    dialect: oracle
+  datasource:
+    default:
+      type: com.alibaba.druid.pool.DruidDataSource
+      driver-class-name: oracle.jdbc.OracleDriver
+      url: jdbc:oracle:thin:@${JDBC_URL:localhost:1521:xydb}
+      username: ${JDBC_USERNAME:sharedb}
+      password: ${JDBC_PASSWORD:kingstar}
+      initialSize: 5
+      minIdle: 5
+      maxActive: 20
+      maxWait: 6000
+      validationQuery: SELECT 1 FROM DUAL
+      testWhileIdle: true
+      filters: stat,wall,log4j
+      logSlowSql: true

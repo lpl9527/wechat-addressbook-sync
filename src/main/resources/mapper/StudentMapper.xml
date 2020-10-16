@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.supwisdom.platform.model.Student">
+
+    <!--淮阴-->
+    <resultMap type="com.supwisdom.platform.model.Student" id="BaseResultMap">
+        <result column="ID" property="id" />
+        <result column="XH" property="xh" /> <!--学号-->
+        <result column="XM" property="xm"/>  <!--姓名-->
+        <result column="SZBH" property="depts"/>  <!--所属部门-->
+        <result column="SJH" property="mobile"/>  <!--手机号-->
+        <result column="YXH" property="email"/>  <!--邮箱号-->
+        <result column="XBM" property="gender"/> <!--性别码，1男，2女-->
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        T.ID, T.XH, T.XM, T.SJH, T.YXH, T.SZBH, T.XBM
+    </sql>
+
+    <!-- 查找学生 -->
+    <select id="findAll" resultMap="BaseResultMap">
+        SELECT
+            <include refid="Base_Column_List"/>
+        FROM xs_xsjbsj T
+        where (T.sjh is not null or T.yxh is not null)
+            and T.xsdqztm = '01'
+            and (to_char(sysdate, 'yyyy') - substr(T.rxny, 1, 4)) <![CDATA[ < ]]> 5
+    </select>
+
+</mapper>
